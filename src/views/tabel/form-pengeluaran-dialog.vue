@@ -105,14 +105,14 @@ export default {
       this.closeDateDialog();
     },
 
-    closeDialog(message = "") {
+    closeDialog(message = null) {
       this.form = {
         tanggal: "",
         nama: "",
         jumlah: "",
       };
 
-      if (!message.length) {
+      if (!message) {
         this.$emit("close-form");
       } else {
         this.$emit("close-form-open-snackbar", message);

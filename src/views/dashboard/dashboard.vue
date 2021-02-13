@@ -20,7 +20,6 @@
       <v-row>
         <v-col
           cols="12"
-          md="6"
           v-for="(chart, idx) in chartData"
           :key="chart.dataLabel"
         >
@@ -74,29 +73,6 @@ export default {
           color: "warning",
         },
       ],
-      chartData2: [
-        {
-          Ylabel: [
-            "Red",
-            "Blue",
-            "Yellow",
-            "Green",
-            "Purple",
-            "Orange",
-            "indigo",
-            "maroon",
-          ],
-          Xdata: [12, 19, 3, 5, 2, 3, 6, 5],
-          dataLabel: "PENDAPATAN",
-          borderColor: "#388E3C",
-        },
-        {
-          Ylabel: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
-          Xdata: [11, 29, 6, 5, 6, 8],
-          dataLabel: "PENGELUARAN",
-          borderColor: "#FB8C00",
-        },
-      ],
     };
   },
   computed: {
@@ -120,8 +96,8 @@ export default {
       return this.$store.state.tabel_pengeluaran;
     },
     chartData() {
-      let pemasukan = this.data_penerimaan.slice(-6);
-      let pengeluaran = this.data_pengeluaran.slice(-6);
+      let pemasukan = this.data_penerimaan.slice(-8);
+      let pengeluaran = this.data_pengeluaran.slice(-8);
 
       let data_pemasukan = {
         dataLabel: "PEMASUKAN",

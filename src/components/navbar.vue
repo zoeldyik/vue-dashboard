@@ -1,11 +1,14 @@
 <template>
   <div class="wrap">
-    <v-app-bar app flat>
+    <v-app-bar app flat color="white">
       <v-app-bar-nav-icon @click.stop="toggleSidebar"></v-app-bar-nav-icon>
       <v-spacer></v-spacer>
 
-      <v-btn color="warning" small depressed @click="logout">
+      <v-btn small depressed color="warning" @click="logout">
         LOGOUT
+        <v-icon x-small>
+          mdi-logout
+        </v-icon>
       </v-btn>
     </v-app-bar>
   </div>

@@ -7,7 +7,7 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     isLogin:false,
-    target:1000000,
+    target:10000000,
     headers_tbl_penerimaan: [
       {
         text: "TANGGAL",
@@ -32,42 +32,42 @@ export default new Vuex.Store({
     tabel_penerimaan: [
       {
         id:1,
-        tanggal: "01-12-20",
+        tanggal: "01-12-2020",
         nama: "JAINUDIN",
         jumlah: 100000,
         penerima: "ADI",
       },
       {
         id:2,
-        tanggal: "01-12-20",
+        tanggal: "01-12-2020",
         nama: "ZAKARIA",
         jumlah: 150000,
         penerima: "BUDI",
       },
       {
         id:3,
-        tanggal: "11-02-21",
+        tanggal: "11-02-2021",
         nama: "HAMBA ALLAH",
         jumlah: 100000,
         penerima: "DEDI",
       },
       {
         id:4,
-        tanggal: "12-02-21",
+        tanggal: "12-02-2021",
         nama: "JAMIL",
         jumlah: 300000,
         penerima: "DODI",
       },
       {
         id:5,
-        tanggal: "15-02-21",
+        tanggal: "15-02-2021",
         nama: "IMAN",
         jumlah: 50000,
         penerima: "ADI",
       },
       {
         id:6,
-        tanggal: "21-02-21",
+        tanggal: "21-02-2021",
         nama: "JAINUDIN",
         jumlah: 250000,
         penerima: "DEDI",
@@ -113,6 +113,19 @@ export default new Vuex.Store({
     ],
   },
   getters:{
+    // data for tabel route
+    get_tabel_penerimaan(state){
+      return state.tabel_penerimaan;
+    },
+    get_tabel_pengeluaran(state){
+      return state.tabel_pengeluaran;
+    },
+
+
+    // data for dashboard route
+    get_data_penerimaan(state){
+      return state.tabel_penerimaan;
+    },
     get_all(state){
       const target = state.target; 
       const pendapatan = state.tabel_penerimaan.reduce((a,b)=> a + b.jumlah,0)
@@ -128,7 +141,7 @@ export default new Vuex.Store({
 
     add_data(state,payload){
       const {tabel, data} = payload;
-      tabel.unshift(data);
+      tabel.push(data);
     },
 
     deleteData(state,payload){
@@ -163,3 +176,4 @@ export default new Vuex.Store({
     paths: ['isLogin']
   })],
 })
+

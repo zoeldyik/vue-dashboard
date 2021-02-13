@@ -53,6 +53,8 @@
           :items="items_tabel_penerimaan"
           :items-per-page="5"
           :search="tbl_penerimaan.search"
+          :sort-by="sort.column"
+          :sort-desc="sort.isDesc"
           class="text-uppercase"
         >
           <template v-slot:item.jumlah="{ item }">
@@ -131,6 +133,8 @@
           :items="items_tabel_pengeluaran"
           :search="tbl_pengeluaran.search"
           :items-per-page="5"
+          :sort-by="sort.column"
+          :sort-desc="sort.isDesc"
           class="text-uppercase"
         >
           <template v-slot:item.jumlah="{ item }">
@@ -223,6 +227,10 @@ export default {
   },
   data() {
     return {
+      sort: {
+        column: "tanggal",
+        isDesc: true,
+      },
       tbl_penerimaan: {
         search: "",
       },
@@ -254,10 +262,10 @@ export default {
       return this.$store.state.headers_tbl_pengeluaran;
     },
     items_tabel_penerimaan() {
-      return this.$store.state.tabel_penerimaan;
+      return this.$store.getters.get_tabel_penerimaan;
     },
     items_tabel_pengeluaran() {
-      return this.$store.state.tabel_pengeluaran;
+      return this.$store.getters.get_tabel_pengeluaran;
     },
   },
   methods: {
@@ -278,7 +286,6 @@ export default {
       this.dialogTitle = title;
       this.dataForUpdate = { ...item };
       this.open_form_penerimaan();
-      console.log(item);
     },
     create_item_penerimaan(title) {
       this.dialogTitle = title;

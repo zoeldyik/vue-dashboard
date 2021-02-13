@@ -1,7 +1,28 @@
 <template>
-  <v-navigation-drawer v-model="sidebarMenu" app :permanent="sidebarMenu">
+  <v-navigation-drawer
+    v-model="sidebarMenu"
+    app
+    :temporary="isTemporary"
+    :permanent="isPermanent"
+  >
     <v-list dense>
-      <v-list-item link to="/">ADMIN PANEL</v-list-item>
+      <v-list-item>
+        <v-list-item-content>
+          <v-list-item-title class="title">ADMIN PANEL</v-list-item-title>
+        </v-list-item-content>
+        <v-list-item-icon class="d-md-none">
+          <v-icon @click="close">mdi-close</v-icon>
+        </v-list-item-icon>
+      </v-list-item>
+
+      <!-- <v-list-item dense @click="close" class="primary" dark>
+        <v-list-item-content>
+          <v-list-item-title>CLOSE SIDEBAR</v-list-item-title>
+        </v-list-item-content>
+        <v-list-item-icon>
+          <v-icon>mdi-close</v-icon>
+        </v-list-item-icon>
+      </v-list-item> -->
     </v-list>
     <v-list dense class="pt-2">
       <v-list-item
@@ -24,9 +45,10 @@
 
 <script>
 export default {
-  props: ["sidebarMenu"],
-  data() {
+  props: ["sidebarMenu", "isPermanent"],
+  data(vm) {
     return {
+      isTemporary: vm.$vuetify.breakpoint.smAndDown,
       items: [
         ["mdi-monitor-dashboard", "DASHBOARD", "/"],
         ["mdi-chart-box-plus-outline", "TABEL", "/tabel"],
@@ -35,7 +57,7 @@ export default {
   },
   methods: {
     close() {
-      this.$emit("toggle-sidebar");
+      this.$emit("close");
     },
   },
 };
