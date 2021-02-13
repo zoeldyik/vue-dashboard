@@ -1,4 +1,5 @@
 # simple-dashboard
+see demo [here](https://tastes-vue-dashboard.netlify.app/)
 
 ## Project setup
 ```
